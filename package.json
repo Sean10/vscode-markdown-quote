@@ -1,0 +1,53 @@
+{
+  "name": "vscode-markdown-quote",
+	"displayName": "vscode-markdown-quote",
+	"description": "vscode markdown block quote.",
+	"version": "0.0.1",
+	"engines": {
+		"vscode": "^1.49.0"
+	},
+	"categories": [
+		"Other"
+	],
+	"activationEvents": [
+        "onLanguage:markdown"
+    ],
+	"main": "./out/extension.js",
+	"contributes": {
+		"commands": [
+			{
+				"command": "extension.markdownToggleQuote",
+				"title": "vscode toggle quote"
+			}
+		],
+		"keybindings":[
+			{
+                "command": "extension.markdownToggleQuote",
+				"key": "alt+.",
+				"mac": "cmd+.",
+                "when": "editorTextFocus && editorLangId == markdown"
+            }
+		]
+	},
+	"scripts": {
+		"vscode:prepublish": "yarn run compile",
+		"compile": "tsc -p ./",
+		"lint": "eslint src --ext ts",
+		"watch": "tsc -watch -p ./",
+		"pretest": "yarn run compile && yarn run lint",
+		"test": "node ./out/test/runTest.js"
+	},
+	"devDependencies": {
+		"@types/vscode": "^1.49.0",
+		"@types/glob": "^7.1.3",
+		"@types/mocha": "^8.0.0",
+		"@types/node": "^14.0.27",
+		"eslint": "^7.6.0",
+		"@typescript-eslint/eslint-plugin": "^3.8.0",
+		"@typescript-eslint/parser": "^3.8.0",
+		"glob": "^7.1.6",
+		"mocha": "^8.1.3",
+		"typescript": "^4.0.2",
+		"vscode-test": "^1.4.0"
+	}
+}
