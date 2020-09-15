@@ -1,8 +1,8 @@
 {
-  "name": "vscode-markdown-quote",
+	"name": "vscode-markdown-quote",
 	"displayName": "vscode-markdown-quote",
 	"description": "vscode markdown block quote.",
-	"version": "0.0.1",
+	"version": "0.1.0",
 	"publisher": "sean10",
 	"engines": {
 		"vscode": "^1.49.0"
@@ -11,8 +11,8 @@
 		"Other"
 	],
 	"activationEvents": [
-        "onLanguage:markdown"
-    ],
+		"onLanguage:markdown"
+	],
 	"main": "./out/extension.js",
 	"contributes": {
 		"commands": [
@@ -21,13 +21,13 @@
 				"title": "vscode toggle quote"
 			}
 		],
-		"keybindings":[
+		"keybindings": [
 			{
-                "command": "extension.markdownToggleQuote",
+				"command": "extension.markdownToggleQuote",
 				"key": "alt+.",
 				"mac": "cmd+.",
-                "when": "editorTextFocus && editorLangId == markdown"
-            }
+				"when": "editorTextFocus && editorLangId == markdown"
+			}
 		]
 	},
 	"scripts": {
@@ -52,8 +52,8 @@
 		"vscode-test": "^1.4.0"
 	},
 	"license": "MIT",
-    "repository": {
-        "type": "git",
-        "url": "https://github.com/Sean10/vscode-markdown-quote"
-    }
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/Sean10/vscode-markdown-quote"
+	}
 }
