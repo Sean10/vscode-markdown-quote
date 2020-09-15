@@ -2,7 +2,7 @@
 	"name": "vscode-markdown-quote",
 	"displayName": "vscode-markdown-quote",
 	"description": "vscode markdown block quote.",
-	"version": "0.1.0",
+	"version": "0.2.0",
 	"publisher": "sean10",
 	"engines": {
 		"vscode": "^1.49.0"
