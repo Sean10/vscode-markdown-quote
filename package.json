@@ -19,6 +19,14 @@
 			{
 				"command": "extension.markdownToggleQuote",
 				"title": "vscode toggle quote"
+			},
+			{
+				"command": "extension.markdownIncreaseQuote",
+				"title": "vscode increase quote"
+			},
+			{
+				"command": "extension.markdownDecreaseQuote",
+				"title": "vscode decrease quote"
 			}
 		],
 		"keybindings": [
@@ -27,6 +35,18 @@
 				"key": "alt+.",
 				"mac": "cmd+.",
 				"when": "editorTextFocus && editorLangId == markdown"
+			}
+		],
+		"configuration": [
+			{
+				"title": "markdown quote",
+				"properties": {
+					"markdownQuote.spaceBetweenPrefixes": {
+						"description": "Add space between quote and the beginning of the line.",
+						"type": "boolean",
+						"default": true
+					}
+				}
 			}
 		]
 	},

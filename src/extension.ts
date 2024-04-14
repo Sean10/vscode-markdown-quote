@@ -17,11 +17,14 @@ function getQuoteState(lineArray: Array<string>): QuoteState {
 }
 
 function quoteLine(line: string): string {
-    if(!line.startsWith(">")){
-        return "> " + line;
-    } else {
-        return line;
-    }
+    let conf = workspace.getConfiguration();
+    let spaceBetweenPrefixes = conf.get('markdownQuote.spaceBetweenPrefixes', true);
+    return spaceBetweenPrefixes ? "> " + line : ">" + line;
+    // if(!line.startsWith(">")){
+    //     return "> " + line;
+    // } else {
+    //     return line;
+    // }
 }
 
 function unquoteLine(line: string): string {
@@ -72,9 +75,55 @@ function toggleQuote() {
     });
 }
 
+function increaseQuote() {
+	let editor = window.activeTextEditor;
+	if (editor == undefined) {
+		return ;
+	}
+    let start = editor.selection.start;
+    let end = editor.selection.end;
+    start = editor.document.lineAt(start.line).range.start;
+    end = editor.document.lineAt(end.line).range.end;
+    let linesText = editor.document.getText(new Range(start, end));;
+    let eol = editor.document.eol === EndOfLine.CRLF ? '\r\n' : '\n';
+
+    let line_array = linesText.split(eol);
+    let resultText = setQuote(line_array, QuoteState.PARTIALQUOTED, eol);
+
+    return editor.edit(editBuilder => {
+        editBuilder.replace(new Range(start, end), resultText);
+    });
+}
+
+function decreaseQuote() {
+	let editor = window.activeTextEditor;
+	if (editor == undefined) {
+		return ;
+	}
+    let start = editor.selection.start;
+    let end = editor.selection.end;
+    start = editor.document.lineAt(start.line).range.start;
+    end = editor.document.lineAt(end.line).range.end;
+    let linesText = editor.document.getText(new Range(start, end));;
+    let eol = editor.document.eol === EndOfLine.CRLF ? '\r\n' : '\n';
+
+    let line_array = linesText.split(eol);
+    let resultText = setQuote(line_array, QuoteState.FULLQUOTED, eol);
+
+    return editor.edit(editBuilder => {
+        editBuilder.replace(new Range(start, end), resultText);
+    });
+}
+
 export function activate(context: ExtensionContext) {
     context.subscriptions.push(
         commands.registerCommand('extension.markdownToggleQuote', toggleQuote)
+    );
+    context.subscriptions.push(
+        commands.registerCommand('extension.markdownIncreaseQuote', increaseQuote)
+    );
+    context.subscriptions.push(
+        commands.registerCommand('extension.markdownDecreaseQuote', decreaseQuote)
     );
 }
 

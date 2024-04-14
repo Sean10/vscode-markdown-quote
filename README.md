@@ -5,12 +5,23 @@
 所以这个插件暂时主要用于下述需求的场景, 对于需要对多级列表等进行引用的场景, 还没有一个比较好的方案.
 
 # 支持场景
-* 当`cursor`在某个位置, 未选中任何内容
-  * 需求: 该行行首增加`> `即可
-* 当选中了多行文本
-  * 每行选中文本无引用标记的行首增加`> `即可.
-  * 若全部均以引用,则统一去除行首的引用标记.
 
+* increase
+  * keybinding: None
+* decrease
+  * keybinding: None
+* toggle
+  * keybinding: cmd + . / alt + .
+  * 当`cursor`在某个位置, 未选中任何内容
+    * 需求: 该行行首增加`> `即可
+  * 当选中了多行文本
+    * 每行选中文本无引用标记的行首增加`> `即可.
+    * 若全部均以引用,则统一去除行首的引用标记.
+
+
+# 设置
+
+* spaceBetweenPrefixes: True(default)
 
 # Reference
 1. [leidichen/markdown\-add\-quote](https://github.com/leidichen/markdown-add-quote)
